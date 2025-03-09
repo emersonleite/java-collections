@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        PeopleList peopleList = new PeopleList();
+        PeopleArrayList peopleArrayList = new PeopleArrayList();
 
         People p1 = new People("Emerson", 50, "Dev", 1.72f);
         People p2 = new People("Marta", 50, "Divaneide", 1.65f);
@@ -15,26 +15,26 @@ public class App {
         People p4 = new People("Stella", 15, "DEVA", 1.62f);
         People p5 = new People("Neuza", 62, "Mãe", 1.57f);
 
-        peopleList.addPerson(p1);
-        peopleList.addPerson(p2);
-        peopleList.addPerson(p3);
-        peopleList.addPerson(p4);
-        peopleList.addPerson(p5);
+        peopleArrayList.addPerson(p1);
+        peopleArrayList.addPerson(p2);
+        peopleArrayList.addPerson(p3);
+        peopleArrayList.addPerson(p4);
+        peopleArrayList.addPerson(p5);
 
         System.out.println("Ordenando por idade:");
-        List<People> reordenateByAge = peopleList.ordenateByAge();
+        List<People> reordenateByAge = peopleArrayList.ordenateByAge();
         System.out.println(reordenateByAge);
 
         System.out.println();
 
         System.out.println("Ordenando por altura:");
-        List<People> reordenateByHeight = peopleList.ordenateByHeight();
+        List<People> reordenateByHeight = peopleArrayList.ordenateByHeight();
         System.out.println(reordenateByHeight);
 
         System.out.println();
 
         System.out.println("Procurando por nome - Emerson");
-        List<People> listFindByName = peopleList.findByName("Emerson");
+        List<People> listFindByName = peopleArrayList.findByName("Emerson");
         System.out.println(listFindByName);
 
         System.out.println();
@@ -43,27 +43,27 @@ public class App {
         List<People> listToExclude = new ArrayList<>();
         listToExclude.add(p1);
         listToExclude.add(p2);
-        peopleList.removeMany(listToExclude);
-        peopleList.viewList();
+        peopleArrayList.removeMany(listToExclude);
+        peopleArrayList.viewList();
         System.out.println();
 
         System.out.println("Removendo uma pessoa -  Mariana");
-        peopleList.removeOne(p3);
-        peopleList.viewList();
+        peopleArrayList.removeOne(p3);
+        peopleArrayList.viewList();
         System.out.println();
 
         System.out.println("Removendo Neuza");
-        peopleList.removeByName("Neuza");
-        peopleList.viewList();
+        peopleArrayList.removeByName("Neuza");
+        peopleArrayList.viewList();
         System.out.println();
 
         System.out.println("Removendo Stella (lista fica vazia)");
-        peopleList.removeByName("Stella");
-        peopleList.viewList();
+        peopleArrayList.removeByName("Stella");
+        peopleArrayList.viewList();
         System.out.println();
 
         System.out.println("Tentando remover pessoa que não existe");
-        peopleList.removeByName("Ola mundo");
+        peopleArrayList.removeByName("Ola mundo");
 
     }
 }
