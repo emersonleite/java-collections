@@ -6,11 +6,11 @@ import comparators.HeightComparator;
 import entities.People;
 
 @SuppressWarnings("SpellCheckingInspection")
-public class PeopleList {
+public class PeopleArrayList {
 
     List<People> peopleList;
 
-    public PeopleList() {
+    public PeopleArrayList() {
         this.peopleList = new ArrayList<People>();
     }
 
@@ -75,10 +75,11 @@ public class PeopleList {
         return list;
     }
 
-    /* Utilizando uma Classe que extende Comparator */
+    /* Utilizando uma Classe que extende Comparator - HeightComparator */
     public List<People> ordenateByHeight() {
         List<People> list = new ArrayList<>(peopleList);
-        Collections.sort(list, new HeightComparator());
+        // Collections.sort(list, new HeightComparator());
+         list.sort(new HeightComparator()); // Opção com list.sort ao invés de Collections.sort
         return list;
 
     }
