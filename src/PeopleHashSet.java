@@ -1,17 +1,17 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import comparators.HeightComparator;
-import entities.list.People;
+import entities.set.People;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 @SuppressWarnings("SpellCheckingInspection")
-public class PeopleArrayList {
+public class PeopleHashSet {
 
-    List<People> peopleList;
+    private Set<People> peopleList;
 
-    public PeopleArrayList() {
-        this.peopleList = new ArrayList<>();
+    public PeopleHashSet() {
+        this.peopleList = new HashSet<>();
     }
 
     public void addPerson(People person) {
@@ -41,7 +41,7 @@ public class PeopleArrayList {
             return;
         }
 
-        List<People> listToExclude = new ArrayList<>();
+        Set<People> listToExclude = new HashSet<>();
 
         for (People p : this.peopleList) {
             if (p.getName().equalsIgnoreCase(name)) {
@@ -51,15 +51,15 @@ public class PeopleArrayList {
         this.peopleList.removeAll(listToExclude);
     }
 
-    public void removeMany(List<People> peopleList) {
+    public void removeMany(Set<People> peopleList) {
         if (isListEmpty()) {
             return;
         }
         this.peopleList.removeAll(peopleList);
     }
 
-    public List<People> findByName(String name) {
-        List<People> list = new ArrayList<>();
+    public Set<People> findByName(String name) {
+        Set<People> list = new HashSet<>();
 
         for (People p : this.peopleList) {
             if (p.getName().equalsIgnoreCase(name)) {
@@ -69,18 +69,15 @@ public class PeopleArrayList {
         return list;
     }
 
-    public List<People> ordenateByAge() {
-        List<People> list = new ArrayList<>(peopleList);
-        Collections.sort(list);
-        return list;
+    public Set<People> ordenateByAge() {
+        Set<People> listByAge = new TreeSet<>(peopleList);
+        return listByAge;
     }
 
     /* Utilizando uma Classe que extende Comparator - HeightComparator */
-    public List<People> ordenateByHeight() {
-        List<People> list = new ArrayList<>(peopleList);
-        // Collections.sort(list, new HeightComparator());
-        list.sort(new HeightComparator()); // Opção com list.sort ao invés de Collections.sort
-        return list;
-
+    public Set<People> ordenateByHeight() {
+        Set<People> listByHeight = new TreeSet<>(new HeightComparator());
+        listByHeight.addAll(peopleList);
+        return listByHeight;
     }
 }

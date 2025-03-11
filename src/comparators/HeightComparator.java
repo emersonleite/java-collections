@@ -1,7 +1,7 @@
 package comparators;
 
 import java.util.Comparator;
-import entities.People;
+import entities.list.People;
 
 public class HeightComparator implements Comparator<People> {
 

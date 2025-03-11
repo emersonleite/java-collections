@@ -1,4 +1,6 @@
-package entities;
+package entities.list;
+
+import java.util.Objects;
 
 public class People implements Comparable<People> {
 
@@ -28,7 +30,7 @@ public class People implements Comparable<People> {
 
     @Override
     public String toString() {
-        return "name=" + name + ", age=" + age + ", job=" + job + ", height=" + height;
+        return "name=" + name + ", age=" + age; // + ", job=" + job + ", height=" + height;
     }
 
     @Override
@@ -46,18 +48,12 @@ public class People implements Comparable<People> {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        if (obj == null)
+        if (o == null || getClass() != o.getClass())
             return false;
-        if (getClass() != obj.getClass())
-            return false;
-        People other = (People) obj;
-        if (name == null) {
-            return other.name == null;
-        } else
-            return name.equals(other.name);
+        People people = (People) o;
+        return Objects.equals(name, people.name);
     }
-
 }
